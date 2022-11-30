@@ -21,7 +21,7 @@
 
 ### Step 4:
   #### Handling test cases
-   ##### C => Create => If document with same Employee ID already exist
+  ##### C => Create => If document with same Employee ID already exist
   <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204758458-e02669de-e1ce-4a6d-9d15-1345da9a2e65.png">
   ##### U => Update => If updating document employee does not exist
   <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204758990-3ae387a0-cbaf-4d92-adc4-03e93eba6633.png">
