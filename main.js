@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
-const prompt = require('prompt');
 
 const app = express();
 app.use(bodyparser.urlencoded({extended:true}));
@@ -23,40 +22,32 @@ const empSchema = new mongoose.Schema({
 
 const employee= mongoose.model("employee",empSchema);
 
-app.get("/",function(req,res){ //Read
-    employee.find({}, function(err, employees) { 
-        res.end(JSON.stringify(employees));
-    })
-});
-
 app.post("/create", function(req, res) { //create
     const eid = req.body.EID;
     const name = req.body.Name;
     const email = req.body.Email;
     const phno = req.body.Phno;
-    console.log(eid+" "+name+" "+email+" "+phno);
     const newEmp = new employee({
       EID:eid,
       Name: name,
       Email: email,
       Phno: phno
     });
-    employee.insertMany(newEmp);
-    res.redirect("/");
+    employee.find({EID:eid},function(err,result){
+        if(Object.keys(result).length==0){
+            employee.insertMany(newEmp,function(err,res1){
+                res.redirect("/");
+            });
+        }else{
+            res.end(eid+" already exist, try another EID");
+        };
+    });
   });
 
-app.delete("/delete", function(req, res) {  //delete
-    const eid = req.body.EID;
-      employee.deleteOne({
-        EID:eid
-      }, function(err) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Success");
-        }
-      });
-      res.redirect("/");
+  app.get("/",function(req,res){ //Read
+    employee.find({}, function(err, employees) { 
+        res.end(JSON.stringify(employees));
+    })
 });
 
 app.put("/update", function(req,res){  //update
@@ -65,23 +56,32 @@ app.put("/update", function(req,res){  //update
     var Email = req.body.Email;
     var Phno = req.body.Phno;
     var updates = {};
-    if (typeof name !== 'undefined') updates['Name'] = name;
-    if (typeof Email !== 'undefined') updates['Email'] = Email;
-    if (typeof Phno !== 'undefined') updates['Phno'] = Phno;
-    const options = { upsert: true };
-    //console.log(updateVal);
-    var status = 0;
+    if (name.length!=0) updates['Name'] = name;
+    if (Email.length!=0) updates['Email'] = Email;
+    if (Phno.length!=0) updates['Phno'] = Phno;
     employee.updateOne({
         EID: eid
     },{$set:updates},function(err,res1){
-        console.log(res1);
-        status = res1.modifiedCount;
-        if(status==0) alert(eid+" not found");
+        if(res1.modifiedCount==0){ 
+            res.end(JSON.stringify(eid+" not found"))
+        }
         else res.redirect("/");
     });
     
 });
 
+app.delete("/delete", function(req, res) {  //delete
+    const eid = req.body.EID;
+      employee.deleteOne({
+        EID:eid
+      }, function(err,result) {
+        if(result.deletedCount==0){
+            res.end(eid+" does not exist.");
+        }else{
+            res.redirect("/");
+        }
+      });
+});
 
 app.listen(1080,function(){
     console.log("server started");
