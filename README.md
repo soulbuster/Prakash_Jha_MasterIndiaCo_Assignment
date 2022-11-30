@@ -1,8 +1,8 @@
 ﻿# Prakash_Jha_MasterIndiaCo_Assignment
 ### Steps to execute the program.
-Step 1:
-  npm init // to setup the npm module
-  npm i mongoose express body-parser // to install required packages
+### Step 1:
+  ##### npm init // to setup the npm module
+  ##### npm i mongoose express body-parser // to install required packages
   
 Step 2:
   node .\main.js  // to start the server
