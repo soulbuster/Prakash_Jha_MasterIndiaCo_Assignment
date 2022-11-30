@@ -28,5 +28,14 @@
   D => Delete => If deleting document employee does not exist
    <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204759330-22118bd1-f825-4a90-bdd6-b8c710321d46.png">
 
-    
-    
+### Hence 4 endpint API calls to perform CRUD Operations are
+#### Create => http://127.0.0.1:1080/create
+#### Read => http://127.0.0.1:1080/
+#### Update => http://127.0.0.1:1080/update
+#### Delete => http://127.0.0.1:1080/delete
+
+### Assignment Completed
+#### Name: Prakash Jha
+#### Email: prakashjha6677@gmail.com
+#### Phno: 8999455858
+#### If have any queries regarding assignment please contact me Sir.
