@@ -12,11 +12,11 @@
   #### 4 API calls to perform CRUD operations is as follows:
    ##### C => Create
    <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204756368-6dea8dfe-145e-4000-acaa-561218161fa6.png">
-  ##### R => Read
+  R => Read
    <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204757146-d6158980-0f8c-42d5-83a9-90b334ec64ef.png">
-  ##### U => Update
+  U => Update
    <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204757564-a33d04b6-1655-4dcc-9b75-99fa02dd129c.png">
-  ##### D => Delete
+  D => Delete
    <img width="960" alt="image" src="https://user-images.githubusercontent.com/68415972/204757825-46a9c1af-e886-4c9f-9889-27170ff7daa0.png">
 
 ### Step 4:
